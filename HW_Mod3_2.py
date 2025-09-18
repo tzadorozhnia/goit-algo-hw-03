@@ -1,20 +1,4 @@
-from datetime import datetime
 import random
-
-def get_days_from_today(date: str) -> int | str:
-    """
-        Функція обчислює кількість днів між заданою датою та поточною датою.
-
-        :param date: рядок у форматі 'YYYY-MM-DD'
-        :return: ціле число (може бути від'ємним), що вказує різницю у днях
-        """
-    try:
-        given_date = datetime.strptime(date, "%Y-%m-%d").date()
-        today = datetime.today().date()
-        return given_date.toordinal() - today.toordinal()
-    except ValueError:
-        return f"Помилка: '{date}' не відповідає формату 'YYYY-MM-DD'."
-
 
 def get_numbers_ticket(min_value: int, max_value: int, quantity: int) -> list[int]:
     """
@@ -36,3 +20,6 @@ def get_numbers_ticket(min_value: int, max_value: int, quantity: int) -> list[in
     res = random.sample(range(min_value, max_value + 1), quantity)
     res.sort()
     return res
+
+lottery_numbers = get_numbers_ticket(1, 49, 6)
+print("Ваші лотерейні числа:", lottery_numbers)
